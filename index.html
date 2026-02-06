@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prison World: Devil's Lock</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header class="top-bar">
+        <div class="logo">
+          <i data-lucide="skull" aria-hidden="true"></i>
+          <span>Prison World</span>
+        </div>
+        <div class="top-actions">
+          <button class="ghost" id="toggleMusic">Toggle Echoes</button>
+          <button class="ghost" id="toggleHints">Hints</button>
+        </div>
+      </header>
+
+      <main class="screen" id="screen">
+        <section class="panel active" data-panel="splash">
+          <div class="splash">
+            <div class="splash-art">
+              <div class="sigil">⛓️</div>
+              <div class="sigil">🩸</div>
+              <div class="sigil">🔥</div>
+            </div>
+            <h1>Devil's Lock: The Prison World</h1>
+            <p>
+              The devil stole your powers and sealed you inside a fractured realm. Begin at level 0,
+              master the prison's rules, and claw your way to the gate that returns you home.
+            </p>
+            <button class="primary" data-next="character">Begin the Escape</button>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="character">
+          <div class="character-select">
+            <div class="story">
+              <h2>Choose Your Vessel</h2>
+              <p>
+                Every soul is stripped to raw glyphs here. Select the avatar that will carry your
+                remaining willpower.
+              </p>
+              <ul class="lore">
+                <li><i data-lucide="swords"></i> Strike with reclaimed steel.</li>
+                <li><i data-lucide="sparkles"></i> Find relics to restore powers.</li>
+                <li><i data-lucide="door-open"></i> Defeat the warden to open the gate.</li>
+              </ul>
+            </div>
+            <div class="character-grid" id="characterGrid">
+              <button class="character-card" data-character="Wraith">
+                <div class="glyph">😈</div>
+                <h3>Wraith</h3>
+                <p>Fast, agile, born for shadows.</p>
+              </button>
+              <button class="character-card" data-character="Rune Knight">
+                <div class="glyph">🧙‍♂️</div>
+                <h3>Rune Knight</h3>
+                <p>Balanced, blessed with fading spells.</p>
+              </button>
+              <button class="character-card" data-character="Ironbound">
+                <div class="glyph">🤖</div>
+                <h3>Ironbound</h3>
+                <p>Tough, built for heavy doors.</p>
+              </button>
+            </div>
+            <div class="actions">
+              <button class="ghost" data-prev="splash">Back</button>
+              <button class="primary" id="startGame" disabled>Enter Level 1</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="game">
+          <div class="hud">
+            <div class="hud-item">
+              <i data-lucide="heart"></i>
+              <span id="hudHealth">❤❤❤</span>
+            </div>
+            <div class="hud-item">
+              <i data-lucide="target"></i>
+              <span id="hudObjective">Find the first relic</span>
+            </div>
+            <div class="hud-item">
+              <i data-lucide="swords"></i>
+              <span id="hudWeapon">Blaster: 6</span>
+            </div>
+          </div>
+          <div class="game-layout">
+            <div class="story-panel">
+              <h3>Level 1: The Chainscript</h3>
+              <p id="storyText">
+                You awaken in the prison's lower halls. The devils have turned stone into code.
+                Navigate the platforms, defeat the sentries, and claim the relic to restore your
+                first power shard.
+              </p>
+              <ul class="controls">
+                <li><strong>Move</strong>: Arrow keys / A, D</li>
+                <li><strong>Jump</strong>: W / Space</li>
+                <li><strong>Shoot</strong>: J</li>
+                <li><strong>Pause</strong>: P</li>
+              </ul>
+              <div class="status" id="statusText">Selected hero: <span id="heroName">-</span></div>
+              <button class="ghost" id="restart">Restart Level</button>
+            </div>
+            <div class="game-panel">
+              <canvas id="gameCanvas" width="640" height="360"></canvas>
+              <div class="game-caption">
+                <span>Assets: ASCII blocks ▓▒░, emojis, and lucide glyphs.</span>
+                <span id="gameHint">Collect the 🔮 relic to unlock the boss door.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
